@@ -1,10 +1,9 @@
-import { MovieProps, MoviesProps } from 'interfaces/moviesProps'
+import { MoviesProps } from 'interfaces/moviesProps'
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import { api } from 'utils/api'
 
 interface MoviesContextData {
   movieList: MoviesProps[]
-  setMovieList: React.Dispatch<React.SetStateAction<MovieProps[]>>
   loading: boolean
   setLoading: (state: boolean) => void
 }
@@ -44,9 +43,7 @@ export const MovieProvider = ({ children }: ContextProp) => {
   }, [])
 
   return (
-    <MovieContext.Provider
-      value={{ movieList, setMovieList, loading, setLoading }}
-    >
+    <MovieContext.Provider value={{ movieList, loading, setLoading }}>
       {children}
     </MovieContext.Provider>
   )
